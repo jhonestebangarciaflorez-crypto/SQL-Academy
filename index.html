@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprende las bases de SQL desde cero. Tu guía rápida con los conceptos, tablas y comandos esenciales de nivel básico.">
+    <title>SQL Academy</title>
+    <link rel="stylesheet" href="static/styles/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+            </a>
+            <h1>SQL <span>Academy</span></h1>
+        </div>
+        <div class="search-bar">
+            <input type="search" placeholder="Buscar comando (ej. SELECT, WHERE, JOIN)...">
+        </div>
+        <div class="page-color">
+            <button class="theme-toggle" id="themeToggle">
+                <!-- Icono de sol (Light) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <span>Light</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- INICIO DEL CONTENEDOR FLEX -->
+    <div class="layout-container">
+
+        <aside class="sidebar-left">
+            <nav class="sidebar-nav">
+                
+                <!-- Grupo 1 -->
+                <div class="nav-group">
+                    <span class="group-title">01 INTRODUCCIÓN</span>
+                    <ul>
+                        <li class="active"><a href="#">¿Qué es SQL?</a></li>
+                        <li><a href="#">Sintaxis SQL</a></li>
+                    </ul>
+                </div>
+
+                <!-- Grupo 2 -->
+                <div class="nav-group">
+                    <span class="group-title">02 COMANDOS BÁSICOS</span>
+                    <ul>
+                        <li><a href="#">SELECT</a></li>
+                        <li><a href="#">WHERE</a></li>
+                        <li><a href="#">ORDER BY</a></li>
+                        <li><a href="#">INSERT INTO</a></li>
+                        <li><a href="#">UPDATE</a></li>
+                        <li><a href="#">DELETE</a></li>
+                    </ul>
+                </div>
+
+                <!-- Grupo 3 -->
+                <div class="nav-group">
+                    <span class="group-title">03 OPERADORES Y FILTROS</span>
+                    <ul>
+                        <li><a href="#">AND, OR, NOT</a></li>
+                        <li><a href="#">LIKE</a></li>
+                        <li><a href="#">IN</a></li>
+                        <li><a href="#">BETWEEN</a></li>
+                    </ul>
+                </div>
+
+                <!--Grupo 4 -->
+                <div class="nav-group">
+                    <span class="group-title">04 AGREGACIÓN</span>
+                    <ul>
+                        <li><a href="#">COUNT, SUM, AVG</a></li>
+                        <li><a href="#">MIN, MAX</a></li>
+                        <li><a href="#">GROUP BY</a></li>
+                        <li><a href="#">HAVING</a></li>
+                    </ul>
+                </div>
+
+                <!--Grupo 5 -->
+                <div class="nav-group">
+                    <span class="group-title">05 UNIONES BÁSICAS</span>
+                    <ul>
+                        <li><a href="#">INNER JOIN</a></li>
+                        <li><a href="#">LEFT JOIN</a></li>
+                    </ul>
+                </div>
+
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- 1. Breadcrumbs -->
+            <nav class="breadcrumbs">
+                <a href="#">SQL Academy</a> &gt; 
+                <a href="#">Introducción</a> &gt; 
+                <span>¿Qué es SQL?</span>
+            </nav>
+
+            <!-- 2. Encabezado del artículo -->
+            <header class="article-header">
+                <h1>¿Qué es SQL?</h1>
+                <div class="article-meta">
+                    <span class="tag">SQL Básico</span>
+                    <span class="read-time">5 min de lectura</span>
+                    <span class="updated-date">• Actualizado 2024</span>
+                </div>
+            </header>
+
+            <!-- 3. Contenido explicativo -->
+            <section class="article-section">
+                <br>
+                <p>
+                    SQL (Structured Query Language) es el lenguaje estándar para gestionar y manipular 
+                    bases de datos relacionales. Fue desarrollado en los años 70 por IBM y hoy es 
+                    ampliamente adoptado en sistemas como PostgreSQL, MySQL, SQLite y SQL Server. 
+                    Con SQL puedes crear, leer, actualizar y eliminar datos de manera declarativa: 
+                    describes qué quieres, no cómo obtenerlo.
+                </p>
+
+                <br>
+                <p>
+                    SQL opera sobre tablas — estructuras bidimensionales de filas y columnas — 
+                    organizadas dentro de una base de datos. Cada tabla representa una entidad del 
+                    dominio (clientes, pedidos, productos) y las relaciones entre ellas se expresan 
+                    mediante claves primarias y claves foráneas.
+                </p>
+            </section>
+
+            <!-- Sección: Sintaxis Oficial -->
+            <section class="code-section">
+                <h2>Sintaxis oficial</h2>
+                
+                <div class="code-box">
+                    <!-- Barra superior del bloque de código -->
+                    <div class="code-header">
+                        <span class="code-lang">SQL SYNTAX</span>
+                        <button class="copy-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copiar
+                        </button>
+                    </div>
+
+                    <!-- Cuerpo del código -->
+                    <div class="code-body">
+                        <pre><code><span class="keyword">SELECT</span> columna1, columna2
+<span class="keyword">FROM</span> nombre_tabla
+<span class="keyword">WHERE</span> condicion
+<span class="keyword">ORDER BY</span> columna1 <span class="keyword">ASC</span>;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección: Tabla de Ejemplo -->
+            <section class="table-section">
+                <h2>Tabla de Ejemplo — <span>Clientes</span></h2>
+                <p class="section-desc">Datos de referencia utilizados en los ejemplos de esta sección.</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOMBRE</th>
+                                <th>PAÍS</th>
+                                <th>CIUDAD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="id-col">1</td>
+                                <td>Ana García</td>
+                                <td>España</td>
+                                <td>Madrid</td>
+                            </tr>
+                            <tr>
+                                <td class="id-col">2</td>
+                                <td>John Smith</td>
+                                <td>USA</td>
+                                <td>New York</td>
+                            </tr>
+                            <tr>
+                                <td class="id-col">3</td>
+                                <td>Yuki Tanaka</td>
+                                <td>Japón</td>
+                                <td>Tokio</td>
+                            </tr>
+                            <tr>
+                                <td class="id-col">4</td>
+                                <td>Marie Dupont</td>
+                                <td>Francia</td>
+                                <td>París</td>
+                            </tr>
+                            <tr>
+                                <td class="id-col">5</td>
+                                <td>Carlos Ruiz</td>
+                                <td>México</td>
+                                <td>CDMX</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Caja destacados: Buenas Prácticas -->
+            <div class="callout-box">
+                <div class="callout-icon">
+                    <!-- Icono de bombilla -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                        <path d="M9 18h6"></path>
+                        <path d="M10 22h4"></path>
+                    </svg>
+                </div>
+                <div class="callout-content">
+                    <h4>BUENAS PRÁCTICAS</h4>
+                    <p>SQL no distingue entre mayúsculas y minúsculas para las palabras clave (<code>SELECT</code> = <code>select</code>), pero por convención se escriben en <strong>MAYÚSCULAS</strong> para mejorar la legibilidad.</p>
+                </div>
+            </div>
+
+            <!-- Separador inferior -->
+            <hr class="section-divider">
+
+            <!-- Navegación inferior (Botón Siguiente) -->
+            <div class="next-page-container">
+                <a href="#" class="next-page-btn">
+                    <div class="btn-text">
+                        <span class="btn-label">SIGUIENTE</span>
+                        <span class="btn-title">Sintaxis SQL</span>
+                    </div>
+                    <!-- Icono de flecha a la derecha -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </main>
+
+        <aside class="sidebar-right">
+            <nav class="table-of-contents">
+
+            </nav>
+
+            <div class="resources">
+
+            </div>
+        </aside>
+
+    </div> <!-- FIN DEL CONTENEDOR FLEX -->
+
+</body>
+</html>
