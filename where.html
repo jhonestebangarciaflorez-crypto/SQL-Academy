@@ -52,8 +52,8 @@
                 <div class="nav-group">
                     <span class="group-title">01 INTRODUCCIÓN</span>
                     <ul>
-                        <li class="active"><a href="index.html">¿Qué es SQL?</a></li>
-                        <li><a href="sintaxis.html">Sintaxis SQL</a></li>
+                        <li><a href="index.html">¿Qué es SQL?</a></li>
+                        <li ><a href="sintaxis.html">Sintaxis SQL</a></li>
                     </ul>
                 </div>
 
@@ -62,7 +62,7 @@
                     <span class="group-title">02 COMANDOS BÁSICOS</span>
                     <ul>
                         <li><a href="select.html">SELECT</a></li>
-                        <li><a href="where.html">WHERE</a></li>
+                        <li class="active"><a href="where.html">WHERE</a></li>
                         <li><a href="orderby.html">ORDER BY</a></li>
                         <li><a href="insertinto.html">INSERT INTO</a></li>
                         <li><a href="update.html">UPDATE</a></li>
@@ -108,13 +108,13 @@
             <!-- 1. Breadcrumbs -->
             <nav class="breadcrumbs">
                 <a href="#">SQL Academy</a> &gt; 
-                <a href="#">Introducción</a> &gt; 
-                <span>¿Qué es SQL?</span>
+                <a href="#">Comandos Básicos</a> &gt; 
+                <span>SELECT</span>
             </nav>
 
             <!-- 2. Encabezado del artículo -->
             <header class="article-header">
-                <h1 class="que-es-select">¿Qué es SQL?</h1>
+                <h1 class="que-es-select">SQL SELECT Statement</h1>
                 <div class="article-meta">
                     <span class="tag">SQL Básico</span>
                     <span class="read-time">5 min de lectura</span>
@@ -126,19 +126,17 @@
             <section class="article-section">
                 <br>
                 <p>
-                    SQL (Structured Query Language) es el lenguaje estándar para gestionar y manipular 
-                    bases de datos relacionales. Fue desarrollado en los años 70 por IBM y hoy es 
-                    ampliamente adoptado en sistemas como PostgreSQL, MySQL, SQLite y SQL Server. 
-                    Con SQL puedes <strong> crear, leer, actualizar y eliminar</strong> datos de manera declarativa: 
-                    describes qué quieres, no cómo obtenerlo.
+                    La sentencia <strong>SELECT</strong> es el comando más fundamental de SQL. Se utiliza para 
+                    <strong> recuperar datos</strong> de una o más tablas de la base de datos. Puedes seleccionar 
+                    columnas específicas separadas por coma, o usar el comodín <code>*</code>  para obtener 
+                    todas las columnas disponibles en la tabla.
                 </p>
 
                 <br>
                 <p>
-                    SQL opera sobre <strong>tablas</strong>— estructuras bidimensionales de filas y columnas — 
-                    organizadas dentro de una <strong>Base de datos</strong>. Cada tabla representa una entidad del 
-                    dominio (clientes, pedidos, productos) y las relaciones entre ellas se expresan 
-                    mediante <strong>claves primarias y claves foráneas.</strong> 
+                    El resultado de un SELECT se denomina result set (conjunto de resultados). 
+                    No modifica los datos — es una operación de <strong> sólo lectura</strong> . Puedes combinarla 
+                    con <strong>WHERE</strong> para filtrar, <strong>ORDER BY</strong> para ordenar y <strong> LIMIT</strong> para paginar los resultados.
                 </p>
             </section>
 
@@ -162,9 +160,9 @@
                     <!-- Cuerpo del código -->
                     <div class="code-body">
                         <pre><code><span class="keyword">SELECT</span> columna1, columna2
-<span class="keyword">FROM</span> nombre_tabla
-<span class="keyword">WHERE</span> condicion
-<span class="keyword">ORDER BY</span> columna1 <span class="keyword">ASC</span>;</code></pre>
+<span class="keyword">FROM</span> nombre_tabla;
+<span class="keyword"></span>
+<span class="keyword">SELECT</span> * <span class="keyword">FROM </span>nombre_tabla;</pre>
                     </div>
                 </div>
             </section>
@@ -188,15 +186,13 @@
                     <div class="playground-editor">
                         <code>
                         <span class="sql-keyword">SELECT</span> nombre, país 
-                        <span class="sql-keyword">FROM</span> Clientes 
-                        <span class="sql-keyword">WHERE</span> país = <span class="sql-string">'España'</span>;
+                        <span class="sql-keyword">FROM</span> Clientes; 
                         </code>
                     </div>
-
                     <!-- Resultado (Oculto por defecto con la clase 'hidden') -->
                     <div id="playground-result" class="playground-result hidden">
                         <div class="result-status">
-                        <span class="check-icon">✓</span> Resultado (1 fila)
+                        <span class="check-icon">✓</span> Resultado (3 filas)
                         </div>
                         
                         <div class="result-table-container">
@@ -208,6 +204,15 @@
                             </tr>
                             </thead>
                             <tbody>
+                            
+                            <tr>
+                                <td>Marie Dupont</td>
+                                <td>Francia</td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Ruiz</td>
+                                <td>México</td>
+                            </tr>
                             <tr>
                                 <td>Ana García</td>
                                 <td>España</td>
@@ -282,7 +287,9 @@
                 </div>
                 <div class="callout-content">
                     <h4 >BUENAS PRÁCTICAS</h4>
-                    <p>SQL no distingue entre mayúsculas y minúsculas para las palabras clave (<code>SELECT</code> = <code>select</code>), pero por convención se escriben en <strong>MAYÚSCULAS</strong> para mejorar la legibilidad.</p>
+                    <p>
+                        Evita usar SELECT * en producción — especifica siempre las columnas necesarias. Seleccionar columnas explícitas mejora el rendimiento y hace tu código más resiliente ante cambios de esquema.
+                    </p>
                 </div>
             </div>
 
@@ -290,15 +297,26 @@
             <hr class="section-divider">
 
             <!-- Navegación inferior (Botón Siguiente) -->
-            <div class="next-page-container">
-                <a href="sintaxis.html" class="next-page-btn">
-                    <div class="btn-text">
-                        <span class="btn-label">SIGUIENTE</span>
-                        <span class="btn-title">Sintaxis SQL</span>
-                    </div>
-                    <!-- Icono de flecha a la derecha -->
+            <div class="page-navigation">
+                <!-- Botón Anterior (Lleva a index.html) -->
+                <a href="sintaxis.html" class="nav-page-btn prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <div class="btn-text">
+                    <span class="btn-label">ANTERIOR</span>
+                    <span class="btn-title">Sintaxis SQL</span>
+                    </div>
+                </a>
+
+                <!-- Botón Siguiente (Lleva a select.html) -->
+                <a href="where.html" class="nav-page-btn next">
+                    <div class="btn-text">
+                    <span class="btn-label">SIGUIENTE</span>
+                    <span class="btn-title">WHERE</span>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </a>
             </div>

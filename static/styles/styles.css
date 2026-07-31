@@ -163,12 +163,12 @@ header {
 
 /* --- Columna Central (Main) --- */
 .main-content {
-  flex: 1;
-  max-width: 900px;
-  height: calc(100vh - 60px);
-  overflow-y: auto; /* Scroll independiente para la información de la página */
-  padding: 2rem;
-  box-sizing: border-box;
+    flex: 1;
+    max-width: 900px;
+    height: calc(100vh - 60px);
+    overflow-y: auto; /* Scroll independiente para la información de la página */
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 /* --- Sección Caja de Código --- */
@@ -240,6 +240,25 @@ header {
 .keyword {
     color: var(--accent-cyan);
     font-weight: 600;
+}
+/* Bloque contenedor de código */
+.code-block pre {
+  margin: 0;
+  padding: 1.25rem;
+  background-color: transparent;
+  overflow-x: auto;
+  text-align: left; /* Alineación a la izquierda */
+}
+
+.code-block code {
+  display: flex;
+  flex-direction: column; /* Organiza cada línea de arriba a abajo */
+  align-items: flex-start; /* Alinea todas las líneas al borde izquierdo */
+  font-family: 'Fira Code', Consolas, Monaco, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #f8fafc;
+  text-align: left;
 }
 
 /* --- Sección Tabla de Ejemplo --- */
@@ -732,4 +751,82 @@ tbody tr:last-child td {
 
 .toc-link.active-resource .arrow {
   color: #38bdf8;
+}
+
+/* Contenedor general de navegación inferior */
+.page-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Estilos de las tarjetas de navegación */
+.nav-page-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-width: 180px;
+}
+
+/* Alineación según si es botón anterior o siguiente */
+.nav-page-btn.prev {
+  text-align: left;
+}
+
+.nav-page-btn.next {
+  text-align: right;
+  margin-left: auto; /* Si solo hay botón siguiente, lo empuja a la derecha */
+}
+
+/* Efectos Hover */
+.nav-page-btn:hover {
+  background-color: rgba(56, 189, 248, 0.08);
+  border-color: #38bdf8;
+}
+
+.nav-page-btn.prev:hover {
+  transform: translateX(-4px); /* Se mueve levemente a la izquierda */
+}
+
+.nav-page-btn.next:hover {
+  transform: translateX(4px); /* Se mueve levemente a la derecha */
+}
+
+/* Textos dentro del botón */
+.nav-page-btn .btn-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-page-btn .btn-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.nav-page-btn .btn-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.nav-page-btn:hover .btn-title,
+.nav-page-btn:hover svg {
+  color: #38bdf8;
+}
+
+.nav-page-btn svg {
+  color: #64748b;
+  transition: color 0.2s ease;
 }
