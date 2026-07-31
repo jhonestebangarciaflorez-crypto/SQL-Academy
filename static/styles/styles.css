@@ -110,13 +110,18 @@ header {
 
 /* --- Columna Izquierda (Sidebar) --- */
 .sidebar-left {
-    font-family: Inter;
-    width: 240px;
-    background-color: var(--bg-sidebar);
-    border-right: 1px solid var(--border-color);
-    padding: 24px 16px;
+    width: 260px;
+    min-width: 260px;
+    /* Altura fija calculada restando la barra superior de 60px */
+    height: calc(100vh - 60px); 
+    overflow-y: auto; /* Activa la barra de desplazamiento solo cuando el contenido sobrepasa el alto */
+    position: sticky;
+    top: 60px; /* Se mantiene pegado justo debajo del navbar */
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.5rem 1rem;
     box-sizing: border-box;
 }
+
 
 .nav-group {
     margin-bottom: 24px;
@@ -158,11 +163,12 @@ header {
 
 /* --- Columna Central (Main) --- */
 .main-content {
-    flex: 1;
-    max-width: 800px;
-    margin: 0 auto; /* Centra horizontalmente */
-    padding: 32px 40px;
-    box-sizing: border-box;
+  flex: 1;
+  max-width: 900px;
+  height: calc(100vh - 60px);
+  overflow-y: auto; /* Scroll independiente para la información de la página */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 /* --- Sección Caja de Código --- */
@@ -467,4 +473,263 @@ tbody tr:last-child td {
 
 .toc-link.active-resource .arrow {
     color: #38bdf8;
+}
+
+
+/* Estilo para las barras de desplazamiento (Webkit: Chrome, Edge, Safari) */
+.sidebar-left::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-left::-webkit-scrollbar-track,
+.main-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-left::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+.sidebar-left::-webkit-scrollbar-thumb:hover,
+.main-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+/* Sección Interactiva - Probar Consulta */
+.interactive-section {
+    margin: 2.5rem 0;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 1rem;
+}
+
+/* Tarjeta Principal del Playground */
+.playground-card {
+    background-color: #0b1329;
+    border: 1px solid #1e3a5f;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Cabecera del Playground */
+.playground-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playground-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.playground-title {
+    color: #38bdf8;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Badge (SQL Playground) */
+.badge {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-family: monospace;
+}
+
+/* Botón Ejecutar SQL */
+.btn-execute {
+    background-color: #0284c7;
+    color: #ffffff;
+    border: none;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-execute:hover {
+    background-color: #0369a1;
+}
+
+.btn-execute:active {
+    transform: scale(0.98);
+}
+
+.play-icon {
+    font-size: 0.7rem;
+}
+
+/* Editor interno de código */
+.playground-editor {
+    background-color: #050a18;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+}
+
+/* Resaltado de sintaxis dentro del playground */
+.sql-keyword {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.sql-string {
+    color: #4ade80;
+}
+
+
+.btn-copy {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-copy.copied {
+    background-color: rgba(74, 222, 128, 0.15);
+    color: #4ade80;
+    border-color: #4ade80;
+}
+
+/* Estilos base del botón copiar (asegúrate de que coincida con tu diseño) */
+.btn-copy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: #64748b; /* Color gris suave */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-copy:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Estado de ÉXITO (Copiado) --- */
+.btn-copy.copy-success {
+    color: #4ade80 !important; /* Verde brillante */
+    border-color: #4ade80 !important;
+    background-color: rgba(74, 222, 128, 0.1) !important;
+    transform: scale(1.02); /* Pequeño pulso */
+}
+
+/* Contenedor del resultado */
+.playground-result {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Clase para ocultar */
+.playground-result.hidden {
+    display: none;
+}
+
+/* Indicador status (✓ Resultado (1 fila)) */
+.result-status {
+    color: #2dd4bf; /* Verde menta/turquesa de la imagen */
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Tabla de resultados */
+.result-table-container {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #050a18;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.result-table th {
+    background-color: #1e293b;
+    color: #38bdf8;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    font-family: monospace;
+    letter-spacing: 0.05em;
+}
+
+.result-table td {
+    padding: 0.75rem 1rem;
+    color: #e2e8f0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animación de entrada suave */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.main-content {
+    scroll-behavior: smooth;
+}
+
+/* Enlaces de recursos */
+.toc-link.external {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toc-link.external .arrow {
+  font-size: 0.75rem;
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Efecto hover en enlaces externos */
+.toc-link.external:hover .arrow {
+  color: #38bdf8;
+  transform: translate(2px, -2px); /* Eleva levemente la flecha */
+}
+
+.toc-link.active-resource {
+  color: #38bdf8;
+}
+
+.toc-link.active-resource .arrow {
+  color: #38bdf8;
 }

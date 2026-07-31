@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aprende las bases de SQL desde cero. Tu guía rápida con los conceptos, tablas y comandos esenciales de nivel básico.">
+    <link rel="icon" type="image/svg+xml" href="static/img/gemini-svg.svg">
     <title>SQL Academy</title>
     <link rel="stylesheet" href="static/styles/styles.css">
 </head>
@@ -20,7 +21,7 @@
             <h1>SQL <span>Academy</span></h1>
         </div>
         <div class="search-bar">
-            <input type="search" placeholder="Buscar comando (ej. SELECT, WHERE, JOIN)...">
+            <input type="search" id="search-input" placeholder="Buscar comando (ej. SELECT, WHERE, JOIN)...">
         </div>
         <div class="page-color">
             <button class="theme-toggle" id="themeToggle">
@@ -113,7 +114,7 @@
 
             <!-- 2. Encabezado del artículo -->
             <header class="article-header">
-                <h1>¿Qué es SQL?</h1>
+                <h1 class="que-es-select">¿Qué es SQL?</h1>
                 <div class="article-meta">
                     <span class="tag">SQL Básico</span>
                     <span class="read-time">5 min de lectura</span>
@@ -143,13 +144,13 @@
 
             <!-- Sección: Sintaxis Oficial -->
             <section class="code-section">
-                <h2>Sintaxis oficial</h2>
+                <h2 id="sintaxis-oficial">Sintaxis oficial</h2>
                 
                 <div class="code-box">
                     <!-- Barra superior del bloque de código -->
                     <div class="code-header">
                         <span class="code-lang">SQL SYNTAX</span>
-                        <button class="copy-btn">
+                        <button class="btn-copy">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -161,15 +162,65 @@
                     <!-- Cuerpo del código -->
                     <div class="code-body">
                         <pre><code><span class="keyword">SELECT</span> columna1, columna2
-<span class="keyword">FROM</span> nombre_tabla
-<span class="keyword">WHERE</span> condicion
-<span class="keyword">ORDER BY</span> columna1 <span class="keyword">ASC</span>;</code></pre>
+                            <span class="keyword">FROM</span> nombre_tabla
+                            <span class="keyword">WHERE</span> condicion
+                            <span class="keyword">ORDER BY</span> columna1 <span class="keyword">ASC</span>;</code></pre>
+                    </div>
+                </div>
+            </section>
+                        <!-- Sección Probar Consulta -->
+            <section id="probar-consulta" class="interactive-section">
+                <h3 class="section-title">Probar Consulta</h3>
+
+                <div class="playground-card">
+                    <!-- Cabecera -->
+                    <div class="playground-header">
+                        <div class="playground-title-group">
+                        <span class="playground-title">Probar Consulta</span>
+                        <span class="badge">SQL Playground</span>
+                        </div>
+                        <button class="btn-execute" id="btn-execute">
+                        <span class="play-icon">▶</span> Ejecutar SQL
+                        </button>
+                    </div>
+
+                    <!-- Editor -->
+                    <div class="playground-editor">
+                        <code>
+                        <span class="sql-keyword">SELECT</span> nombre, país 
+                        <span class="sql-keyword">FROM</span> Clientes 
+                        <span class="sql-keyword">WHERE</span> país = <span class="sql-string">'España'</span>;
+                        </code>
+                    </div>
+
+                    <!-- Resultado (Oculto por defecto con la clase 'hidden') -->
+                    <div id="playground-result" class="playground-result hidden">
+                        <div class="result-status">
+                        <span class="check-icon">✓</span> Resultado (1 fila)
+                        </div>
+                        
+                        <div class="result-table-container">
+                        <table class="result-table">
+                            <thead>
+                            <tr>
+                                <th>NOMBRE</th>
+                                <th>PAÍS</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Ana García</td>
+                                <td>España</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Sección: Tabla de Ejemplo -->
-            <section class="table-section">
+            <section id="tabla-clientes" class="table-section">
                 <h2>Tabla de Ejemplo — <span>Clientes</span></h2>
                 <p class="section-desc">Datos de referencia utilizados en los ejemplos de esta sección.</p>
 
@@ -220,7 +271,7 @@
             </section>
 
             <!-- Caja destacados: Buenas Prácticas -->
-            <div class="callout-box">
+            <div id="buenas-practicas" class="callout-box">
                 <div class="callout-icon">
                     <!-- Icono de bombilla -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -230,7 +281,7 @@
                     </svg>
                 </div>
                 <div class="callout-content">
-                    <h4>BUENAS PRÁCTICAS</h4>
+                    <h4 >BUENAS PRÁCTICAS</h4>
                     <p>SQL no distingue entre mayúsculas y minúsculas para las palabras clave (<code>SELECT</code> = <code>select</code>), pero por convención se escriben en <strong>MAYÚSCULAS</strong> para mejorar la legibilidad.</p>
                 </div>
             </div>
@@ -254,7 +305,6 @@
         </main>
 
         <aside class="sidebar-right">
-            <!-- Sección: En esta página -->
             <div class="toc-section">
                 <h4 class="toc-title">EN ESTA PÁGINA</h4>
                 <nav class="toc-nav">
@@ -270,16 +320,40 @@
 
             <!-- Sección: Recursos -->
             <div class="toc-section">
-                <h4 class="toc-title">RECURSOS</h4>
-                <nav class="toc-nav">
-                <a href="#" class="toc-link external">SQL Standard <span class="arrow">↗</span></a>
-                <a href="#" class="toc-link external active-resource">W3C Spec <span class="arrow">↗</span></a>
-                <a href="#" class="toc-link external">PostgreSQL Docs <span class="arrow">↗</span></a>
-                </nav>
+            <h4 class="toc-title">RECURSOS</h4>
+            <nav class="toc-nav">
+                <!-- Estándar SQL (ISO) -->
+                <a 
+                href="https://www.iso.org/standard/63555.html" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="toc-link external">
+                SQL Standard <span class="arrow">↗</span>
+                </a>
+
+                <!-- Especificación W3C (Web SQL) -->
+                <a 
+                href="https://www.w3.org/TR/webdatabase/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="toc-link external active-resource">
+                W3C Spec <span class="arrow">↗</span>
+                </a>
+
+                <!-- Documentación Oficial PostgreSQL -->
+                <a 
+                href="https://www.postgresql.org/docs/current/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="toc-link external">
+                PostgreSQL Docs <span class="arrow">↗</span>
+                </a>
+            </nav>
             </div>
         </aside>
 
     </div> <!-- FIN DEL CONTENEDOR FLEX -->
+    <script src="static/js/search.js"></script>
 
 </body>
 </html>
