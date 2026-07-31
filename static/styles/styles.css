@@ -73,7 +73,7 @@ header {
     padding: 8px 16px;
     border-radius: 6px;
     outline: none;
-    width: 300px;
+    width: 500px;
 }
 
 .search-bar input::placeholder {
@@ -102,14 +102,16 @@ header {
 /* --- Layout Principal --- */
 .layout-container {
     display: flex;
-    align-items: flex-start; /* Alinea el contenido arriba */
     width: 100%;
-    min-height: calc(100vh - 57px);
+    min-height: calc(100vh - 60px); /* Ajusta al alto de tu navbar */
+    background-color: #030712;
+    box-sizing: border-box;
 }
 
 /* --- Columna Izquierda (Sidebar) --- */
 .sidebar-left {
-    width: 260px;
+    font-family: Inter;
+    width: 240px;
     background-color: var(--bg-sidebar);
     border-right: 1px solid var(--border-color);
     padding: 24px 16px;
@@ -390,4 +392,79 @@ tbody tr:last-child td {
 
 .next-page-btn:hover svg {
     color: var(--accent-cyan);
+}
+
+/* Sidebar Derecha - Estilo exacto Imagen 1 */
+.sidebar-right {
+    width: 250px;
+    min-width: 250px;
+    margin-left: auto; /* <--- Esta línea lo empuja al extremo derecho */
+    background-color: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+}
+
+/* Títulos "EN ESTA PÁGINA" y "RECURSOS" */
+.toc-title {
+    color: #64748b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* Listas de enlaces */
+.toc-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+/* Enlaces normales */
+.toc-link {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toc-link:hover {
+    color: #f8fafc;
+}
+
+/* Botón Activo (¿Qué es SELECT?) */
+.toc-link.active {
+    color: #38bdf8; /* Azul claro brillante */
+    background-color: #0c2035; /* Pastilla azul oscuro de la imagen 1 */
+    font-weight: 600;
+}
+
+/* Línea horizontal separadora */
+.toc-divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 0.5rem 0;
+}
+
+/* Flechas de recursos */
+.toc-link.external .arrow {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.toc-link.active-resource {
+    color: #38bdf8;
+}
+
+.toc-link.active-resource .arrow {
+    color: #38bdf8;
 }
