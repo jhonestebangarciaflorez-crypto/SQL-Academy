@@ -31,7 +31,7 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: -apple-system, sans-serif;
 }
 
 /* --- Header --- */
@@ -120,6 +120,7 @@ header {
     border-right: 1px solid rgba(255, 255, 255, 0.08);
     padding: 1.5rem 1rem;
     box-sizing: border-box;
+    background-color: #0b1126;
 }
 
 
@@ -243,22 +244,22 @@ header {
 }
 /* Bloque contenedor de código */
 .code-block pre {
-  margin: 0;
-  padding: 1.25rem;
-  background-color: transparent;
-  overflow-x: auto;
-  text-align: left; /* Alineación a la izquierda */
+    margin: 0;
+    padding: 1.25rem;
+    background-color: transparent;
+    overflow-x: auto;
+    text-align: left; /* Alineación a la izquierda */
 }
 
 .code-block code {
-  display: flex;
-  flex-direction: column; /* Organiza cada línea de arriba a abajo */
-  align-items: flex-start; /* Alinea todas las líneas al borde izquierdo */
-  font-family: 'Fira Code', Consolas, Monaco, monospace;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #f8fafc;
-  text-align: left;
+    display: flex;
+    flex-direction: column; /* Organiza cada línea de arriba a abajo */
+    align-items: flex-start; /* Alinea todas las líneas al borde izquierdo */
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #f8fafc;
+    text-align: left;
 }
 
 /* --- Sección Tabla de Ejemplo --- */
@@ -421,8 +422,8 @@ tbody tr:last-child td {
 
 /* Sidebar Derecha - Estilo exacto Imagen 1 */
 .sidebar-right {
-    width: 250px;
-    min-width: 250px;
+    width: 200px;
+    min-width: 200px;
     margin-left: auto; /* <--- Esta línea lo empuja al extremo derecho */
     background-color: transparent;
     border-left: 1px solid rgba(255, 255, 255, 0.08);
@@ -452,6 +453,8 @@ tbody tr:last-child td {
 
 /* Enlaces normales */
 .toc-link {
+    font-family: -apple-system, sans-serif; /* O la fuente monospaciada que tengas en tu CSS */
+    font-size: 0.85rem;
     color: #94a3b8;
     text-decoration: none;
     padding: 0.4rem 0.6rem;
@@ -830,3 +833,55 @@ tbody tr:last-child td {
   color: #64748b;
   transition: color 0.2s ease;
 }
+/* Busca el contenedor donde están el h1 y el meta texto */
+.article-header {
+  display: flex;
+  flex-direction: column; /* Cambia de row a column para apilarlos */
+  align-items: flex-start; /* Alinea ambos elementos a la izquierda */
+  gap: 0.5rem;             /* Espacio vertical entre el h1 y el texto */
+}
+
+
+/* Cabecera general: apila el h1 y los metadatos a la izquierda */
+.article-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Fila de metadatos (en una sola línea horizontal) */
+.article-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* Etiqueta / Tag (SQL Básico) */
+.article-meta .tag {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px; /* Forma de píldora redondeada */
+  font-weight: 500;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Tiempo de lectura */
+.article-meta .read-time {
+  color: #94a3b8;
+}
+
+/* Fecha de actualización con el punto verde de estado */
+.article-meta .updated-date {
+  color: #10b981; /* Verde neón */
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+

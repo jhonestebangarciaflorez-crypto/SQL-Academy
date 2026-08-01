@@ -107,14 +107,14 @@
         <main class="main-content">
             <!-- 1. Breadcrumbs -->
             <nav class="breadcrumbs">
-                <a href="#">SQL Academy</a> &gt; 
-                <a href="#">Comandos Básicos</a> &gt; 
-                <span>SELECT</span>
+                <a href="index.html">SQL Academy</a> &gt; 
+                <a href="select.html">Comandos Básicos</a> &gt; 
+                <span>WHERE</span>
             </nav>
 
             <!-- 2. Encabezado del artículo -->
             <header class="article-header">
-                <h1 class="que-es-select">SQL SELECT Statement</h1>
+                <h1 class="que-es-select">SQL WHERE Clause</h1>
                 <div class="article-meta">
                     <span class="tag">SQL Básico</span>
                     <span class="read-time">5 min de lectura</span>
@@ -126,17 +126,16 @@
             <section class="article-section">
                 <br>
                 <p>
-                    La sentencia <strong>SELECT</strong> es el comando más fundamental de SQL. Se utiliza para 
-                    <strong> recuperar datos</strong> de una o más tablas de la base de datos. Puedes seleccionar 
-                    columnas específicas separadas por coma, o usar el comodín <code>*</code>  para obtener 
-                    todas las columnas disponibles en la tabla.
+                    La cláusula <strong>WHERE</strong> filtra las filas que devuelve una consulta. Solo se incluyen en el 
+                    resultado las filas que cumplen la <strong>condición</strong> especificada. Se evalúa fila por fila 
+                    antes de que se aplique cualquier ordenamiento o agrupación.
                 </p>
 
                 <br>
                 <p>
-                    El resultado de un SELECT se denomina result set (conjunto de resultados). 
-                    No modifica los datos — es una operación de <strong> sólo lectura</strong> . Puedes combinarla 
-                    con <strong>WHERE</strong> para filtrar, <strong>ORDER BY</strong> para ordenar y <strong> LIMIT</strong> para paginar los resultados.
+                    WHERE admite operadores de comparación ( <strong>=, !=, <, >, <=, >=</strong> ), operadores lógicos 
+                    ( <strong>AND, OR, NOT</strong> ) y operadores especiales como <strong>LIKE, IN, BETWEEN</strong> e <strong>IS NULL</strong>. Las condiciones 
+                    sobre strings usan <strong>comillas simples</strong>.
                 </p>
             </section>
 
@@ -160,9 +159,8 @@
                     <!-- Cuerpo del código -->
                     <div class="code-body">
                         <pre><code><span class="keyword">SELECT</span> columna1, columna2
-<span class="keyword">FROM</span> nombre_tabla;
-<span class="keyword"></span>
-<span class="keyword">SELECT</span> * <span class="keyword">FROM </span>nombre_tabla;</pre>
+<span class="keyword">FROM</span> nombre_tabla
+<span class="keyword">WHERE</span> condicion;</pre>
                     </div>
                 </div>
             </section>
@@ -185,37 +183,43 @@
                     <!-- Editor -->
                     <div class="playground-editor">
                         <code>
-                        <span class="sql-keyword">SELECT</span> nombre, país 
-                        <span class="sql-keyword">FROM</span> Clientes; 
+                        <span class="sql-keyword">SELECT</span> * 
+                        <span class="sql-keyword">FROM</span> Clientes
+                        <span class="sql-keyword">WHERE</span> pais 
+                        <span class="sql-keyword">=</span> 'México' 
+                        <span class="sql-keyword">OR</span> pais 
+                        <span class="sql-keyword">=</span> 'España'; 
                         </code>
                     </div>
                     <!-- Resultado (Oculto por defecto con la clase 'hidden') -->
                     <div id="playground-result" class="playground-result hidden">
                         <div class="result-status">
-                        <span class="check-icon">✓</span> Resultado (3 filas)
+                        <span class="check-icon">✓</span> Resultado (2 filas)
                         </div>
                         
                         <div class="result-table-container">
                         <table class="result-table">
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>NOMBRE</th>
                                 <th>PAÍS</th>
+                                <th>CIUDAD</th>
                             </tr>
                             </thead>
                             <tbody>
                             
                             <tr>
-                                <td>Marie Dupont</td>
-                                <td>Francia</td>
-                            </tr>
-                            <tr>
-                                <td>Carlos Ruiz</td>
-                                <td>México</td>
-                            </tr>
-                            <tr>
+                                <td>1</td>
                                 <td>Ana García</td>
                                 <td>España</td>
+                                <td>Madrid</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Carlos Ruiz</td>
+                                <td>México</td>
+                                <td>CDMX</td>
                             </tr>
                             </tbody>
                         </table>
@@ -288,7 +292,8 @@
                 <div class="callout-content">
                     <h4 >BUENAS PRÁCTICAS</h4>
                     <p>
-                        Evita usar SELECT * en producción — especifica siempre las columnas necesarias. Seleccionar columnas explícitas mejora el rendimiento y hace tu código más resiliente ante cambios de esquema.
+                        Los valores de texto en <strong>WHERE</strong> siempre van entre comillas simples: 
+                        WHERE país = 'España'. Los valores numéricos no llevan comillas: <strong>WHERE</strong> id = 3.
                     </p>
                 </div>
             </div>
@@ -299,21 +304,21 @@
             <!-- Navegación inferior (Botón Siguiente) -->
             <div class="page-navigation">
                 <!-- Botón Anterior (Lleva a index.html) -->
-                <a href="sintaxis.html" class="nav-page-btn prev">
+                <a href="select.html" class="nav-page-btn prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                     <div class="btn-text">
                     <span class="btn-label">ANTERIOR</span>
-                    <span class="btn-title">Sintaxis SQL</span>
+                    <span class="btn-title">SELECT</span>
                     </div>
                 </a>
 
                 <!-- Botón Siguiente (Lleva a select.html) -->
-                <a href="where.html" class="nav-page-btn next">
+                <a href="orderby.html" class="nav-page-btn next">
                     <div class="btn-text">
                     <span class="btn-label">SIGUIENTE</span>
-                    <span class="btn-title">WHERE</span>
+                    <span class="btn-title">ORDER BY</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>

@@ -64,3 +64,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    if (!themeToggleBtn) return;
+
+    const btnText = themeToggleBtn.querySelector('span');
+
+    const updateUI = (isLight) => {
+        if (btnText) {
+        btnText.textContent = isLight ? 'Dark' : 'Light';
+        }
+    };
+
+    // Cargar preferencia
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        updateUI(true);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        updateUI(isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+});
+
+
+
+
+
+
+
+
+

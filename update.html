@@ -63,9 +63,9 @@
                     <ul>
                         <li><a href="select.html">SELECT</a></li>
                         <li><a href="where.html">WHERE</a></li>
-                        <li class="active"><a href="orderby.html">ORDER BY</a></li>
+                        <li><a href="orderby.html">ORDER BY</a></li>
                         <li><a href="insertinto.html">INSERT INTO</a></li>
-                        <li><a href="update.html">UPDATE</a></li>
+                        <li class="active"><a href="update.html">UPDATE</a></li>
                         <li><a href="delete.html">DELETE</a></li>
                     </ul>
                 </div>
@@ -109,12 +109,12 @@
             <nav class="breadcrumbs">
                 <a href="index.html">SQL Academy</a> &gt; 
                 <a href="select.html">Comandos Básicos</a> &gt; 
-                <span>ORDER BY</span>
+                <span>UPDATE</span>
             </nav>
 
             <!-- 2. Encabezado del artículo -->
             <header class="article-header">
-                <h1 class="que-es-select">SQL ORDER BY Clause</h1>
+                <h1 class="que-es-select">SQL UPDATE Statement</h1>
                 <div class="article-meta">
                     <span class="tag">SQL Básico</span>
                     <span class="read-time">5 min de lectura</span>
@@ -126,16 +126,16 @@
             <section class="article-section">
                 <br>
                 <p>
-                    La cláusula <strong>ORDER BY</strong> ordena el resultado de una consulta según una o más columnas. 
-                    Por defecto el orden es <strong>ASC</strong> (ascendente, de menor a mayor). Usa <strong>DESC</strong> para ordenar de 
-                    mayor a menor.
+                    La sentencia <strong>UPDATE</strong> modifica los datos existentes en una o más filas de una tabla. 
+                    La cláusula SET especifica qué columnas cambiar y sus nuevos valores. <strong>Sin una cláusula 
+                    WHERE</strong>, UPDATE afecta a todas las filas de la tabla — esto es rara vez lo que se quiere.
                 </p>
 
                 <br>
                 <p>
-                    Puedes ordenar por múltiples columnas separándolas con coma. SQL primero ordena por la 
-                    primera columna; cuando hay empates, aplica la segunda, y así sucesivamente. Esto es útil 
-                    para ordenar por apellido y luego por nombre, por ejemplo.
+                    Puedes actualizar múltiples columnas en una sola sentencia separándolas con coma en SET. 
+                    Los nuevos valores pueden ser literales, expresiones matemáticas, o incluso el resultado 
+                    de una subconsulta.
                 </p>
             </section>
 
@@ -158,10 +158,9 @@
 
                     <!-- Cuerpo del código -->
                     <div class="code-body">
-                        <pre><code><span class="keyword">SELECT</span> columna1, columna2
-<span class="keyword">FROM</span> nombre_tabla
-<span class="keyword">ORDER BY </span> columna1 <span class="keyword">ASC;</span></pre>
-
+                        <pre><code><span class="keyword">UPDATE</span> nombre_tabla
+<span class="keyword">SET</span> columna1 = valor1
+<span class="keyword">WHERE</span> condicion;</pre>
                     </div>
                 </div>
             </section>
@@ -184,46 +183,34 @@
                     <!-- Editor -->
                     <div class="playground-editor">
                         <code>
-                        <span class="sql-keyword">SELECT</span> nombre, pais 
-                        <span class="sql-keyword">FROM</span> Clientes
-                        <span class="sql-keyword">ORDER BY</span> pais <span class="sql-keyword">ASC;</span>
+                        <span class="sql-keyword">UPDATE</span> Clientes 
+                        <span class="sql-keyword">SET</span> ciudad = 'Barcelona'
+                        <span class="sql-keyword">WHERE</span> id = 1;
                         </code>
                     </div>
                     <!-- Resultado (Oculto por defecto con la clase 'hidden') -->
                     <div id="playground-result" class="playground-result hidden">
                         <div class="result-status">
-                        <span class="check-icon">✓</span> Resultado (5 filas)
+                        <span class="check-icon">✓</span> Resultado (1 filas)
                         </div>
                         
                         <div class="result-table-container">
                         <table class="result-table">
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>NOMBRE</th>
                                 <th>PAÍS</th>
+                                <th>CIUDAD</th>
                             </tr>
                             </thead>
                             <tbody>
                             
                             <tr>
-                                <td>Marie Dupont</td>
-                                <td>Francia</td>
-                            </tr>
-                            <tr>
-                                <td>Yuki Tanaka</td>
-                                <td>Japón</td>
-                            </tr>
-                            <tr>
-                                <td>Carlos Ruiz</td>
-                                <td>México</td>
-                            </tr>
-                            <tr>
+                                <td>1</td>
                                 <td>Ana García</td>
                                 <td>España</td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>USA</td>
+                                <td>Barcelona</td>
                             </tr>
                             </tbody>
                         </table>
@@ -266,18 +253,7 @@
                                 <td>Japón</td>
                                 <td>Tokio</td>
                             </tr>
-                            <tr>
-                                <td class="id-col">4</td>
-                                <td>Marie Dupont</td>
-                                <td>Francia</td>
-                                <td>París</td>
-                            </tr>
-                            <tr>
-                                <td class="id-col">5</td>
-                                <td>Carlos Ruiz</td>
-                                <td>México</td>
-                                <td>CDMX</td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -296,8 +272,8 @@
                 <div class="callout-content">
                     <h4 >BUENAS PRÁCTICAS</h4>
                     <p>
-                        <strong>ORDER BY NULL</strong> devuelve los registros en un orden indeterminado, que puede variar 
-                        entre ejecuciones. Si el orden importa, siempre sé explícito.
+                        Antes de ejecutar un <strong>UPDATE</strong>, convierte la consulta en <strong>SELECT</strong> con la misma condición 
+                        <strong>WHERE</strong> para verificar qué filas se verán afectadas. Así evitas actualizaciones accidentales.
                     </p>
                 </div>
             </div>
@@ -308,21 +284,21 @@
             <!-- Navegación inferior (Botón Siguiente) -->
             <div class="page-navigation">
                 <!-- Botón Anterior (Lleva a index.html) -->
-                <a href="where.html" class="nav-page-btn prev">
+                <a href="insertinto.html" class="nav-page-btn prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                     <div class="btn-text">
                     <span class="btn-label">ANTERIOR</span>
-                    <span class="btn-title">WHERE</span>
+                    <span class="btn-title">INSERT INTO</span>
                     </div>
                 </a>
 
                 <!-- Botón Siguiente (Lleva a select.html) -->
-                <a href="insertinto.html" class="nav-page-btn next">
+                <a href="delete.html" class="nav-page-btn next">
                     <div class="btn-text">
                     <span class="btn-label">SIGUIENTE</span>
-                    <span class="btn-title">INSERT INTO</span>
+                    <span class="btn-title">DELETE</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>

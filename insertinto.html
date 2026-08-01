@@ -63,8 +63,8 @@
                     <ul>
                         <li><a href="select.html">SELECT</a></li>
                         <li><a href="where.html">WHERE</a></li>
-                        <li class="active"><a href="orderby.html">ORDER BY</a></li>
-                        <li><a href="insertinto.html">INSERT INTO</a></li>
+                        <li><a href="orderby.html">ORDER BY</a></li>
+                        <li class="active"><a href="insertinto.html">INSERT INTO</a></li>
                         <li><a href="update.html">UPDATE</a></li>
                         <li><a href="delete.html">DELETE</a></li>
                     </ul>
@@ -109,12 +109,12 @@
             <nav class="breadcrumbs">
                 <a href="index.html">SQL Academy</a> &gt; 
                 <a href="select.html">Comandos Básicos</a> &gt; 
-                <span>ORDER BY</span>
+                <span>INSERT INTO</span>
             </nav>
 
             <!-- 2. Encabezado del artículo -->
             <header class="article-header">
-                <h1 class="que-es-select">SQL ORDER BY Clause</h1>
+                <h1 class="que-es-select">SQL INSERT INTO Statement</h1>
                 <div class="article-meta">
                     <span class="tag">SQL Básico</span>
                     <span class="read-time">5 min de lectura</span>
@@ -126,16 +126,17 @@
             <section class="article-section">
                 <br>
                 <p>
-                    La cláusula <strong>ORDER BY</strong> ordena el resultado de una consulta según una o más columnas. 
-                    Por defecto el orden es <strong>ASC</strong> (ascendente, de menor a mayor). Usa <strong>DESC</strong> para ordenar de 
-                    mayor a menor.
+                    La sentencia <strong>INSERT INTO</strong> agrega una o más filas nuevas a una tabla. Puedes especificar 
+                    las columnas explícitamente (recomendado) o insertar valores en el orden en que aparecen 
+                    en la definición de la tabla. Las columnas con valor por defecto o autoincremento pueden 
+                    omitirse.
                 </p>
 
                 <br>
                 <p>
-                    Puedes ordenar por múltiples columnas separándolas con coma. SQL primero ordena por la 
-                    primera columna; cuando hay empates, aplica la segunda, y así sucesivamente. Esto es útil 
-                    para ordenar por apellido y luego por nombre, por ejemplo.
+                    Para insertar múltiples filas en una sola sentencia, separa cada conjunto de valores con 
+                    coma dentro de <strong>VALUES</strong>. Esto es más eficiente que múltiples sentencias individuales, 
+                    especialmente con grandes volúmenes de datos.
                 </p>
             </section>
 
@@ -158,10 +159,10 @@
 
                     <!-- Cuerpo del código -->
                     <div class="code-body">
-                        <pre><code><span class="keyword">SELECT</span> columna1, columna2
-<span class="keyword">FROM</span> nombre_tabla
-<span class="keyword">ORDER BY </span> columna1 <span class="keyword">ASC;</span></pre>
-
+                        <pre><code><span class="keyword">INSERT INTO</span> nombre_tabla
+<span class="keyword">(col1, col2, col3)</span> VALUES
+<span class="keyword">(a1, b1, c1),</span>
+<span class="keyword">(a2, b2, c2);</span></pre>
                     </div>
                 </div>
             </section>
@@ -184,46 +185,28 @@
                     <!-- Editor -->
                     <div class="playground-editor">
                         <code>
-                        <span class="sql-keyword">SELECT</span> nombre, pais 
-                        <span class="sql-keyword">FROM</span> Clientes
-                        <span class="sql-keyword">ORDER BY</span> pais <span class="sql-keyword">ASC;</span>
+                        <span class="sql-keyword">INSERT INTO</span> Clientes 
+                        <span class="sql-keyword">(nombre, pais, ciudad)</span> VALUES
+                        <span class="sql-keyword">('Lena Muller','Alemania','Berlin');</span>
                         </code>
                     </div>
                     <!-- Resultado (Oculto por defecto con la clase 'hidden') -->
                     <div id="playground-result" class="playground-result hidden">
                         <div class="result-status">
-                        <span class="check-icon">✓</span> Resultado (5 filas)
+                        <span class="check-icon">✓</span> Resultado (1 filas)
                         </div>
                         
                         <div class="result-table-container">
                         <table class="result-table">
                             <thead>
                             <tr>
-                                <th>NOMBRE</th>
-                                <th>PAÍS</th>
+                                <th>RESULTADO</th>
                             </tr>
                             </thead>
                             <tbody>
                             
                             <tr>
-                                <td>Marie Dupont</td>
-                                <td>Francia</td>
-                            </tr>
-                            <tr>
-                                <td>Yuki Tanaka</td>
-                                <td>Japón</td>
-                            </tr>
-                            <tr>
-                                <td>Carlos Ruiz</td>
-                                <td>México</td>
-                            </tr>
-                            <tr>
-                                <td>Ana García</td>
-                                <td>España</td>
-                            </tr>
-                            <tr>
-                                <td>John Smith</td>
-                                <td>USA</td>
+                                <td>1 fila insertada correctamente</td>
                             </tr>
                             </tbody>
                         </table>
@@ -296,8 +279,8 @@
                 <div class="callout-content">
                     <h4 >BUENAS PRÁCTICAS</h4>
                     <p>
-                        <strong>ORDER BY NULL</strong> devuelve los registros en un orden indeterminado, que puede variar 
-                        entre ejecuciones. Si el orden importa, siempre sé explícito.
+                        Especifica siempre los nombres de columnas en <strong>INSERT INTO</strong>. Omitirlos hace que tu código 
+                        dependa del orden de columnas en el esquema, que puede cambiar.
                     </p>
                 </div>
             </div>
@@ -308,21 +291,21 @@
             <!-- Navegación inferior (Botón Siguiente) -->
             <div class="page-navigation">
                 <!-- Botón Anterior (Lleva a index.html) -->
-                <a href="where.html" class="nav-page-btn prev">
+                <a href="orderby.html" class="nav-page-btn prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                     <div class="btn-text">
                     <span class="btn-label">ANTERIOR</span>
-                    <span class="btn-title">WHERE</span>
+                    <span class="btn-title">ORDER BY</span>
                     </div>
                 </a>
 
                 <!-- Botón Siguiente (Lleva a select.html) -->
-                <a href="insertinto.html" class="nav-page-btn next">
+                <a href="update.html" class="nav-page-btn next">
                     <div class="btn-text">
                     <span class="btn-label">SIGUIENTE</span>
-                    <span class="btn-title">INSERT INTO</span>
+                    <span class="btn-title">UPDATE</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
