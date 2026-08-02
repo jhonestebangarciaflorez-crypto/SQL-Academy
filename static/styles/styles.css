@@ -885,3 +885,26 @@ tbody tr:last-child td {
 }
 
 
+.breadcrumbs {
+  font-size: 0.875rem;
+  color: var(--text-muted, #94a3b8);
+  margin-bottom: 0.5rem;
+}
+
+/* Enlaces sin subrayado */
+.breadcrumbs a {
+  text-decoration: none;
+  color: #3b82f6; /* Azul suave o el color que prefieras para tus links */
+  transition: color 0.2s ease;
+}
+
+/* Efecto opcional al pasar el cursor */
+.breadcrumbs a:hover {
+  color: #60a5fa;
+  text-decoration: underline; /* Puedes omitir esto si tampoco quieres subrayado al hover */
+}
+
+/* Texto de la página actual (el <span> final) */
+.breadcrumbs span {
+  color: var(--text-muted, #94a3b8);
+}

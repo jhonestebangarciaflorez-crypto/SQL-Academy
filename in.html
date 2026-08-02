@@ -66,7 +66,7 @@
                         <li><a href="orderby.html">ORDER BY</a></li>
                         <li><a href="insertinto.html">INSERT INTO</a></li>
                         <li><a href="update.html">UPDATE</a></li>
-                        <li class="active"><a href="delete.html">DELETE</a></li>
+                        <li><a href="delete.html">DELETE</a></li>
                     </ul>
                 </div>
 
@@ -76,7 +76,7 @@
                     <ul>
                         <li><a href="and.html">AND, OR, NOT</a></li>
                         <li><a href="like.html">LIKE</a></li>
-                        <li><a href="in.html">IN</a></li>
+                        <li class="active"><a href="in.html">IN</a></li>
                         <li><a href="between.html">BETWEEN</a></li>
                     </ul>
                 </div>
@@ -108,13 +108,13 @@
             <!-- 1. Breadcrumbs -->
             <nav class="breadcrumbs">
                 <a href="index.html">SQL Academy</a> &gt; 
-                <a href="select.html">Comandos Básicos</a> &gt; 
-                <span>DELETE</span>
+                <a href="and.html">Operadores y Filtros</a> &gt; 
+                <span>IN</span>
             </nav>
 
             <!-- 2. Encabezado del artículo -->
             <header class="article-header">
-                <h1 class="que-es-select">SQL DELETE Statement</h1>
+                <h1 class="que-es-select">IN</h1>
                 <div class="article-meta">
                     <span class="tag">SQL Básico</span>
                     <span class="read-time">5 min de lectura</span>
@@ -126,17 +126,14 @@
             <section class="article-section">
                 <br>
                 <p>
-                    La sentencia <strong>DELETE</strong> elimina filas de una tabla. Al igual que 
-                    <strong>UPDATE, sin cláusula 
-                    WHERE elimina todas las filas</strong> — una operación irreversible en muchos sistemas. 
-                    Siempre verifica tu condición antes de ejecutar.
+                    IN comprueba si un valor pertenece a una lista de valores posibles, simplificando múltiples 
+                    OR. Esta es una de las herramientas más utilizadas en consultas SQL del mundo real.
                 </p>
 
                 <br>
                 <p>
-                    <strong>DELETE sólo elimina filas</strong>, no la tabla en sí. Para eliminar todos los datos de una tabla 
-                    eficientemente, usa <strong>TRUNCATE TABLE</strong> (más rápido, no registra cada fila en el log). Para 
-                    eliminar la tabla completa, usa <strong>DROP TABLE</strong>.
+                    Combina este operador con <strong>WHERE, ORDER BY</strong> y otras cláusulas para construir consultas potentes y expresivas.
+                    
                 </p>
             </section>
 
@@ -159,11 +156,11 @@
 
                     <!-- Cuerpo del código -->
                     <div class="code-body">
-                        <pre><code><span class="keyword">DELETE FROM</span> usuarios
-<span class="keyword">WHERE</span> id = 5;
-<span class="keyword"></span>
-<span class="keyword">DELETE FROM </span>usuarios;</pre>
-                    </div>
+                        <pre><code><span class="keyword">SELECT</span> *
+<span class="keyword">FROM</span> Clientes
+<span class="keyword">WHERE</span> pais
+<span class="keyword">IN</span> ('España', 'México', 'Francia');</pre>
+                        </div>
                 </div>
             </section>
                         <!-- Sección Probar Consulta -->
@@ -185,8 +182,10 @@
                     <!-- Editor -->
                     <div class="playground-editor">
                         <code>
-                        <span class="sql-keyword">DELETE FROM</span> Clientes 
-                        <span class="sql-keyword">WHERE</span> id = 3;
+                        <span class="keyword">SELECT</span> *
+                        <span class="keyword">FROM</span> Clientes
+                        <span class="keyword">WHERE</span> pais
+                        <span class="keyword">IN</span> ('España', 'México', 'Francia');
                         </code>
                     </div>
                     <!-- Resultado (Oculto por defecto con la clase 'hidden') -->
@@ -199,13 +198,31 @@
                         <table class="result-table">
                             <thead>
                             <tr>
-                                <th>Resultado</th>
+                                <th>ID</th>
+                                <th>NOMBRE</th>
+                                <th>PAÍS</th>
+                                <th>CIUDAD</th>
                             </tr>
                             </thead>
                             <tbody>
                             
                             <tr>
-                                <td>1 fila eliminada correctamente</td>
+                                <td class="id-col">1</td>
+                                <td>Ana García</td>
+                                <td>España</td>
+                                <td>Madrid</td>
+                            </tr>
+                            <tr>
+                                <td class="id-col">4</td>
+                                <td>Marie Dupont</td>
+                                <td>Francia</td>
+                                <td>París</td>
+                            </tr>
+                            <tr>
+                                <td class="id-col">5</td>
+                                <td>Carlos Ruiz</td>
+                                <td>México</td>
+                                <td>CDMX</td>
                             </tr>
                             </tbody>
                         </table>
@@ -260,7 +277,6 @@
                                 <td>México</td>
                                 <td>CDMX</td>
                             </tr>
-                            
                         </tbody>
                     </table>
                 </div>
@@ -279,9 +295,7 @@
                 <div class="callout-content">
                     <h4 >BUENAS PRÁCTICAS</h4>
                     <p>
-                        Envuelve operaciones DELETE críticas en una transacción: 
-                        BEGIN TRANSACTION → DELETE → verifica con SELECT → COMMIT o ROLLBACK. Así puedes 
-                        deshacer si algo sale mal.
+                        Practica combinando IN con otras cláusulas SQL para dominar su uso en escenarios reales.
                     </p>
                 </div>
             </div>
@@ -292,21 +306,21 @@
             <!-- Navegación inferior (Botón Siguiente) -->
             <div class="page-navigation">
                 <!-- Botón Anterior (Lleva a index.html) -->
-                <a href="update.html" class="nav-page-btn prev">
+                <a href="like.html" class="nav-page-btn prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                     <div class="btn-text">
                     <span class="btn-label">ANTERIOR</span>
-                    <span class="btn-title">UPDATE</span>
+                    <span class="btn-title">LIKE</span>
                     </div>
                 </a>
 
                 <!-- Botón Siguiente (Lleva a select.html) -->
-                <a href="and.html" class="nav-page-btn next">
+                <a href="between.html" class="nav-page-btn next">
                     <div class="btn-text">
                     <span class="btn-label">SIGUIENTE</span>
-                    <span class="btn-title">AND, OR, NOT</span>
+                    <span class="btn-title">BETWEEN</span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
@@ -319,11 +333,11 @@
             <div class="toc-section">
                 <h4 class="toc-title">EN ESTA PÁGINA</h4>
                 <nav class="toc-nav">
-                <a href="#que-es-select" class="toc-link active">¿Qué es SELECT?</a>
-                <a href="#sintaxis-oficial" class="toc-link">Sintaxis oficial</a>
-                <a href="#probar-consulta" class="toc-link">Probar consulta</a>
-                <a href="#tabla-clientes" class="toc-link">Tabla Clientes</a>
-                <a href="#buenas-practicas" class="toc-link">Buenas prácticas</a>
+                    <a href="#que-es-select" class="toc-link active">¿Qué es SELECT?</a>
+                    <a href="#sintaxis-oficial" class="toc-link">Sintaxis oficial</a>
+                    <a href="#probar-consulta" class="toc-link">Probar consulta</a>
+                    <a href="#tabla-clientes" class="toc-link">Tabla Clientes</a>
+                    <a href="#buenas-practicas" class="toc-link">Buenas prácticas</a>
                 </nav>
             </div>
 
@@ -333,32 +347,32 @@
             <div class="toc-section">
             <h4 class="toc-title">RECURSOS</h4>
             <nav class="toc-nav">
-                <!-- Estándar SQL (ISO) -->
-                <a 
-                href="https://www.iso.org/standard/63555.html" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="toc-link external">
-                SQL Standard <span class="arrow">↗</span>
-                </a>
+                    <!-- Estándar SQL (ISO) -->
+                    <a 
+                    href="https://www.iso.org/standard/63555.html" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="toc-link external">
+                    SQL Standard <span class="arrow">↗</span>
+                    </a>
 
-                <!-- Especificación W3C (Web SQL) -->
-                <a 
-                href="https://www.w3.org/TR/webdatabase/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="toc-link external active-resource">
-                W3C Spec <span class="arrow">↗</span>
-                </a>
+                    <!-- Especificación W3C (Web SQL) -->
+                    <a 
+                    href="https://www.w3.org/TR/webdatabase/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="toc-link external active-resource">
+                    W3C Spec <span class="arrow">↗</span>
+                    </a>
 
-                <!-- Documentación Oficial PostgreSQL -->
-                <a 
-                href="https://www.postgresql.org/docs/current/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="toc-link external">
-                PostgreSQL Docs <span class="arrow">↗</span>
-                </a>
+                    <!-- Documentación Oficial PostgreSQL -->
+                    <a 
+                    href="https://www.postgresql.org/docs/current/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="toc-link external">
+                    PostgreSQL Docs <span class="arrow">↗</span>
+                    </a>
             </nav>
             </div>
         </aside>
